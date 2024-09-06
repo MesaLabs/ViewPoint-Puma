@@ -207,7 +207,7 @@ VALUE engine_init_server(VALUE self, VALUE mini_ssl_ctx) {
     SSL_CTX_load_verify_locations(ctx, RSTRING_PTR(ca), NULL);
   }
 
-  ssl_options = SSL_OP_CIPHER_SERVER_PREFERENCE | SSL_OP_SINGLE_ECDH_USE | SSL_OP_NO_COMPRESSION;
+  ssl_options = SSL_OP_CIPHER_SERVER_PREFERENCE | SSL_OP_SINGLE_ECDH_USE | SSL_OP_NO_COMPRESSION | SSL_OP_NO_NEGOTIATION;
 
 #ifdef HAVE_SSL_CTX_SET_MIN_PROTO_VERSION
   if (RTEST(no_tlsv1_1)) {
